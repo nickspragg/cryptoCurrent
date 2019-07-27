@@ -50,6 +50,7 @@ object CoreLibraries {
     // Dagger core dependencies
     const val dagger2Compiler       = "com.google.dagger:dagger-compiler:${Versions.dagger2}"
     // Dagger Android dependencies
+    const val dagger2        = "com.google.dagger:dagger:${Versions.dagger2}"
     const val dagger2Android        = "com.google.dagger:dagger-android:${Versions.dagger2}"
     const val dagger2AndroidSupport = "com.google.dagger:dagger-android-support:${Versions.dagger2}"
     const val dagger2AnnotationProcessor = "com.google.dagger:dagger-android-processor:${Versions.dagger2}"
@@ -62,11 +63,13 @@ object CoreLibraries {
 object UILibraries {
     private object Versions {
         const val constraintLayout = "1.1.3" // 2.0.0-beta2
+        const val mpAndroidChart = "v3.1.0"
     }
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+    const val mpAndroidChart = "com.github.PhilJay:MPAndroidChart::${Versions.mpAndroidChart}"
 }
 
-object WebserviceLibraries {
+object NetworkLibraries {
     private object Versions {
         const val okHttp = "3.10.0"
         const val logger = "3.8.1"

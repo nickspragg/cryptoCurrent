@@ -26,21 +26,13 @@ android {
 
 dependencies {
 
-    api(CoreLibraries.kotlinStdLib)
-    api(CoreLibraries.appCompat)
-    api(CoreLibraries.ktxCore)
-    api(UILibraries.constraintLayout)
-    api(CoreLibraries.rxJava)
-    api(CoreLibraries.rxKotlin)
-    api(CoreLibraries.rxAndroid)
+    implementation(project(":core"))
 
-    api(CoreLibraries.firebaseCore)
-    api(CoreLibraries.crashlytics)
-    api(CoreLibraries.timberLog)
+    implementation(UILibraries.mpAndroidChart)
+    implementation(NetworkLibraries.retrofit2)
+    implementation(NetworkLibraries.retrofitRxJavaAdapter)
+    implementation(NetworkLibraries.gsonConverter)
 
-    api(CoreLibraries.dagger2)
-    api(CoreLibraries.dagger2Android)
-    api(CoreLibraries.dagger2AndroidSupport)
     kapt(CoreLibraries.dagger2AnnotationProcessor)
     kapt(CoreLibraries.dagger2Compiler)
 

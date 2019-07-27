@@ -5,6 +5,7 @@ buildscript {
         google()
         jcenter()
         maven("https://maven.fabric.io/public")
+        maven("https://jitpack.io")
     }
     dependencies {
         classpath (BuildPlugins.androidGradlePlugin)

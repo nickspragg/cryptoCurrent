@@ -25,14 +25,10 @@ android {
 }
 
 dependencies {
-    implementation(CoreLibraries.appCompat)
-    implementation(CoreLibraries.firebaseCore)
-    implementation(CoreLibraries.crashlytics)
-    implementation(CoreLibraries.timberLog)
-    implementation(UILibraries.constraintLayout)
 
-    implementation(CoreLibraries.dagger2Android)
-    implementation(CoreLibraries.dagger2AndroidSupport)
+    implementation(project(":currentmarket"))
+    implementation(project(":core"))
+
     kapt(CoreLibraries.dagger2AnnotationProcessor)
     kapt(CoreLibraries.dagger2Compiler)
 
@@ -40,7 +36,6 @@ dependencies {
     androidTestImplementation (TestLibraries.testRunner)
     androidTestImplementation (TestLibraries.espresso)
 }
-
 
 apply(mapOf("plugin" to AppBuildPlugins.googleService))
 
