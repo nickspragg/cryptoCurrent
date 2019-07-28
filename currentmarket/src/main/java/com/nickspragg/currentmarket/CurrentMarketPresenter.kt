@@ -17,7 +17,7 @@ class CurrentMarketPresenter @Inject constructor(
 
     private var disposable: CompositeDisposable = CompositeDisposable()
 
-    override fun getMarketChart() {
+    override fun getMarketChart(isRefresh: Boolean) {
 //        https://api.blockchain.info/charts/transactions-per-second
 //        ?timespan=5weeks&rollingAverage=8hours&format=json
         disposable += marketService
@@ -36,11 +36,12 @@ class CurrentMarketPresenter @Inject constructor(
             )
     }
 
-    override fun getSummaryStats() {
+    override fun getSummaryStats(isRefresh: Boolean) {
         disposable += marketService
             .fetchStats()
             .subscribeOn(ioScheduler)
             .observeOn(mainScheduler)
+            .doFinally { if(isRefresh) view.hideIsRefreshing() }
             .subscribe(
                 { response ->
                     response.run {

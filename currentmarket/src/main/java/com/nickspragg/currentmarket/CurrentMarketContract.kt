@@ -8,11 +8,13 @@ interface CurrentMarketContract {
         fun showCurrentPrice(price: Double)
         fun showTradeVolume(volume: Double)
         fun showLastUpdated(time: Long)
+
+        fun hideIsRefreshing()
     }
 
     interface Presenter {
-        fun getMarketChart()
-        fun getSummaryStats()
+        fun getMarketChart(isRefresh: Boolean = false)
+        fun getSummaryStats(isRefresh: Boolean = false)
 
         fun dispose()
     }

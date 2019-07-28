@@ -12,7 +12,6 @@ import java.util.concurrent.Executor
 class RxImmediateSchedulerRule : TestRule {
     private val immediate = object : Scheduler() {
         override fun createWorker(): Scheduler.Worker {
-//            return new ExecutorScheduler.ExecutorWorker(Runnable::run);
             return ExecutorScheduler.ExecutorWorker(Executor { it.run() }, false )
         }
     }

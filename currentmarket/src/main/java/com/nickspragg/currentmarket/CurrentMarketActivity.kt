@@ -44,9 +44,13 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
             getSupportActionBar()?.setDisplayShowTitleEnabled(false)
         }
 
-
         presenter.getMarketChart()
         presenter.getSummaryStats()
+
+        swiperefresh.setOnRefreshListener {
+            presenter.getMarketChart(true)
+            presenter.getSummaryStats(true)
+        }
 
         with(dailyChart) {
             setBackgroundColor(Color.WHITE)
@@ -120,6 +124,10 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
     override fun showLastUpdated(time: Long) {
         val millis = TimeUnit.HOURS.toMillis(time)
         lastUpdated.text = getString(R.string.lastUpdated, lastDateFormat.format(Date(millis)))
+    }
+
+    override fun hideIsRefreshing() {
+        swiperefresh.isRefreshing = false
     }
 
     override fun onDestroy() {
