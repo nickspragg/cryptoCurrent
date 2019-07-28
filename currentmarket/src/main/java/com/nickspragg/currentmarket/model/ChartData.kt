@@ -18,8 +18,8 @@ data class ChartData (
 ) {
     data class PricePoint (
         @SerializedName("x")
-        val xValue: Float,
+        val xValue: Double,
         @SerializedName("y")
-        val yValue: Float
+        val yValue: Double
     )
 }
