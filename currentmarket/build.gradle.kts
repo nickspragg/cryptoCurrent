@@ -38,6 +38,8 @@ dependencies {
     kapt(CoreLibraries.dagger2Compiler)
 
     testImplementation (TestLibraries.junit4)
+    testImplementation(TestLibraries.mockito)
+    testImplementation(TestLibraries.mockitoKotlin)
     androidTestImplementation (TestLibraries.testRunner)
     androidTestImplementation (TestLibraries.espresso)
 }

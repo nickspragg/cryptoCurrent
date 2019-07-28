@@ -14,15 +14,15 @@ interface MarketService {
         @Query("timespan") timespan: String,
         @Query("rollingAverage") rollingAverage: String? = null,
         @Query("start") start: String? = null,
-        @Query("format") format: String = "json"): Single<Response<ChartData>>
+        @Query("format") format: String = "json"): Single<ChartData>
 
     @GET("charts/market-price")
     fun fetchMarketPrice(
         @Query("timespan") timespan: String = "30days",
         @Query("rollingAverage") rollingAverage: String? = null,
         @Query("start") start: String? = null,
-        @Query("format") format: String = "json"): Single<Response<ChartData>>
+        @Query("format") format: String = "json"): Single<ChartData>
 
     @GET("stats")
-    fun fetchStats(): Single<Response<StatsData>>
+    fun fetchStats(): Single<StatsData>
 }

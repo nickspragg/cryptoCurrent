@@ -4,17 +4,17 @@ import com.google.gson.annotations.SerializedName
 
 data class ChartData (
     @SerializedName("status")
-    val status: String?,
+    val status: String? = null,
     @SerializedName("name")
-    val name: String?,
+    val name: String? = null,
     @SerializedName("unit")
-    val unit: String?,
+    val unit: String? = null,
     @SerializedName("period")
-    val period: String?,
+    val period: String? = null,
     @SerializedName("description")
-    val description: String?,
+    val description: String? = null,
     @SerializedName("values")
-    val values: List<PricePoint>?
+    val values: List<PricePoint>? = emptyList()
 ) {
     data class PricePoint (
         @SerializedName("x")

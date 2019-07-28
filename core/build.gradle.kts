@@ -44,7 +44,9 @@ dependencies {
     kapt(CoreLibraries.dagger2AnnotationProcessor)
     kapt(CoreLibraries.dagger2Compiler)
 
-    testImplementation (TestLibraries.junit4)
-    androidTestImplementation (TestLibraries.testRunner)
-    androidTestImplementation (TestLibraries.espresso)
+    testImplementation(TestLibraries.junit4)
+    testImplementation(TestLibraries.mockito)
+    testImplementation(TestLibraries.mockitoKotlin)
+    androidTestImplementation(TestLibraries.testRunner)
+    androidTestImplementation(TestLibraries.espresso)
 }

@@ -26,7 +26,7 @@ class CurrentMarketPresenter @Inject constructor(
             .observeOn(mainScheduler)
             .subscribe(
                 { response ->
-                    response.body()?.values?.run {
+                    response.values?.run {
                         view.showMarketChart(this)
                     }
                 },
@@ -43,7 +43,7 @@ class CurrentMarketPresenter @Inject constructor(
             .observeOn(mainScheduler)
             .subscribe(
                 { response ->
-                    response.body()?.run {
+                    response.run {
                         view.showCurrentPrice(marketPriceUsd)
                         view.showTradeVolume(tradeVolumeUsd)
                         view.showLastUpdated(timestamp)
