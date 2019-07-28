@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">currentmarket</string>
+    <string name="lastUpdated">Last Updated: %1$s</string>
 </resources>

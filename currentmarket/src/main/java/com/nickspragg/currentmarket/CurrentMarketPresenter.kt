@@ -1,9 +1,9 @@
 package com.nickspragg.currentmarket
 
-import android.util.Log
 import com.nickspragg.currentmarket.network.MarketService
 import io.reactivex.Scheduler
-import io.reactivex.disposables.Disposable
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.rxkotlin.plusAssign
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Named
@@ -15,12 +15,12 @@ class CurrentMarketPresenter @Inject constructor(
     @Named("mainScheduler") private val mainScheduler: Scheduler
 ) : CurrentMarketContract.Presenter {
 
-    private var disposable: Disposable? = null
+    private var disposable: CompositeDisposable = CompositeDisposable()
 
     override fun getMarketChart() {
 //        https://api.blockchain.info/charts/transactions-per-second
 //        ?timespan=5weeks&rollingAverage=8hours&format=json
-        disposable = marketService
+        disposable += marketService
             .fetchMarketPrice()
             .subscribeOn(ioScheduler)
             .observeOn(mainScheduler)
@@ -36,7 +36,26 @@ class CurrentMarketPresenter @Inject constructor(
             )
     }
 
+    override fun getSummaryStats() {
+        disposable += marketService
+            .fetchStats()
+            .subscribeOn(ioScheduler)
+            .observeOn(mainScheduler)
+            .subscribe(
+                { response ->
+                    response.body()?.run {
+                        view.showCurrentPrice(marketPriceUsd)
+                        view.showTradeVolume(tradeVolumeUsd)
+                        view.showLastUpdated(timestamp)
+                    }
+                },
+                { error ->
+                    Timber.e(error)
+                }
+            )
+    }
+
     override fun dispose() {
-//        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        disposable.clear()
     }
 }

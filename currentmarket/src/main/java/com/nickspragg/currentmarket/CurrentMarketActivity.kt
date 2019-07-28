@@ -1,15 +1,15 @@
 package com.nickspragg.currentmarket
 
-import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.nickspragg.core.di.CoreInjectHelper
 import com.nickspragg.core.extensions.formatCurrency
@@ -22,10 +22,13 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
-class CurrentMarketActivity : Activity(), CurrentMarketContract.View {
+class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
 
     @Inject
     lateinit var presenter: CurrentMarketContract.Presenter
+
+    private val chartDateFormat = SimpleDateFormat("dd MMM HH:mm", Locale.ENGLISH)
+    private val lastDateFormat = SimpleDateFormat("YYYY/mm/dd HH:mm:ss", Locale.ENGLISH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerCurrentMarketComponent
@@ -37,8 +40,16 @@ class CurrentMarketActivity : Activity(), CurrentMarketContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_current_market)
 
+        findViewById<Toolbar>(R.id.defaultToolbar)?.run {
+            setSupportActionBar(this)
+            getSupportActionBar()?.setDisplayShowTitleEnabled(false)
+        }
+
+
         presenter.getMarketChart()
-        with(dailyChart){
+        presenter.getSummaryStats()
+
+        with(dailyChart) {
             setBackgroundColor(Color.WHITE)
             description.setEnabled(true)
             setTouchEnabled(true)
@@ -49,7 +60,7 @@ class CurrentMarketActivity : Activity(), CurrentMarketContract.View {
             setPinchZoom(true)
             axisRight.isEnabled = false
         }
-        with(dailyChart.axisLeft){
+        with(dailyChart.axisLeft) {
             setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART)
             setTextColor(ColorTemplate.getHoloBlue())
             setDrawGridLines(true)
@@ -58,11 +69,11 @@ class CurrentMarketActivity : Activity(), CurrentMarketContract.View {
             setTextColor(Color.rgb(255, 192, 56))
             setValueFormatter(object : ValueFormatter() {
                 override fun getFormattedValue(value: Float): String {
-                    return value.formatCurrency("USD").toString()
+                    return value.formatCurrency(" USD",rtl = true).toString()
                 }
             })
         }
-        with(dailyChart.xAxis){
+        with(dailyChart.xAxis) {
             setPosition(XAxis.XAxisPosition.TOP_INSIDE)
             setTextSize(10f)
             setTextColor(Color.WHITE)
@@ -72,10 +83,9 @@ class CurrentMarketActivity : Activity(), CurrentMarketContract.View {
             setCenterAxisLabels(true)
             setGranularity(1f) // one hour
             setValueFormatter(object : ValueFormatter() {
-                private val mFormat = SimpleDateFormat("dd MMM HH:mm", Locale.ENGLISH)
                 override fun getFormattedValue(value: Float): String {
                     val millis = TimeUnit.HOURS.toMillis(value.toLong())
-                    return mFormat.format(Date(millis))
+                    return chartDateFormat.format(Date(millis))
                 }
             })
         }
@@ -99,6 +109,19 @@ class CurrentMarketActivity : Activity(), CurrentMarketContract.View {
         // set data
         dailyChart.setData(data)
         dailyChart.invalidate()
+    }
+
+    override fun showCurrentPrice(price: Double) {
+        currentPriceTxt.text = price.toFloat().formatCurrency("USD", rtl = true )
+    }
+
+    override fun showTradeVolume(volume: Double) {
+        tradeVolumeUsdTxt.text = volume.toFloat().formatCurrency(" USD", rtl = true )
+    }
+
+    override fun showLastUpdated(time: Long) {
+        val millis = TimeUnit.HOURS.toMillis(time.toLong())
+        lastUpdated.text = getString(R.string.lastUpdated, chartDateFormat.format(Date(millis)))
     }
 
     override fun onDestroy() {
