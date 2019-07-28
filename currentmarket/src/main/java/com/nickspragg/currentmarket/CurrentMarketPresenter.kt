@@ -21,9 +21,7 @@ class CurrentMarketPresenter @Inject constructor(
 //        https://api.blockchain.info/charts/transactions-per-second
 //        ?timespan=5weeks&rollingAverage=8hours&format=json
         disposable = marketService
-            .fetchMarketPrice(
-                timespan = "1days"
-            )
+            .fetchMarketPrice()
             .subscribeOn(ioScheduler)
             .observeOn(mainScheduler)
             .subscribe(

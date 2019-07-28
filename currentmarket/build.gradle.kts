@@ -29,6 +29,7 @@ dependencies {
     implementation(project(":core"))
 
     implementation(UILibraries.mpAndroidChart)
+    implementation(UILibraries.materialComponents)
     implementation(NetworkLibraries.retrofit2)
     implementation(NetworkLibraries.retrofitRxJavaAdapter)
     implementation(NetworkLibraries.gsonConverter)

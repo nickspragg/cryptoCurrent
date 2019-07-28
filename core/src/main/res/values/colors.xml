@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Color palette-->
+    <color name="color01">#094074</color>
+    <color name="color02">#3c6997</color>
+    <color name="color03">#5adbff</color>
+    <color name="color04">#ffdd4a</color>
+    <color name="color05">#fe9000</color>
+
+    <color name="greyOne">#DCDCDC</color>
+    <color name="greyTwo">#C8C8C8</color>
+
+</resources>

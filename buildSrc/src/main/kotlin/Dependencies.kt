@@ -64,9 +64,11 @@ object UILibraries {
     private object Versions {
         const val constraintLayout = "1.1.3" // 2.0.0-beta2
         const val mpAndroidChart = "v3.1.0"
+        const val materialComponents = "1.0.0" // 1.1.0-alpha08
     }
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-    const val mpAndroidChart = "com.github.PhilJay:MPAndroidChart::${Versions.mpAndroidChart}"
+    const val mpAndroidChart = "com.github.PhilJay:MPAndroidChart:${Versions.mpAndroidChart}"
+    const val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
 }
 
 object NetworkLibraries {
