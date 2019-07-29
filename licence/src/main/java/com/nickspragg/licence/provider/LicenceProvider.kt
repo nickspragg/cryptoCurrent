@@ -9,6 +9,9 @@ import javax.inject.Inject
 
 class LicenceProvider @Inject constructor(private val appContext: Context) {
 
+    /**
+     * Provide a list containing the licences of the libraries used in the app.
+     */
     fun fetchLicences(): List<LicenceData> {
         val jsonString = IOUtils.toString(appContext.assets.open("licences.json"), "utf-8")
         val dataType = object : TypeToken<List<LicenceData>>() { }.getType()

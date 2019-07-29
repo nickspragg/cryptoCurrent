@@ -2,7 +2,7 @@ package com.nickspragg.currentmarket.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ChartData (
+data class ChartData(
     @SerializedName("status")
     val status: String? = null,
     @SerializedName("name")
@@ -16,7 +16,7 @@ data class ChartData (
     @SerializedName("values")
     val values: List<PricePoint>? = emptyList()
 ) {
-    data class PricePoint (
+    data class PricePoint(
         @SerializedName("x")
         val xValue: Double,
         @SerializedName("y")

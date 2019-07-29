@@ -67,9 +67,9 @@ class CurrentMarketPresenterTest {
         whenever(marketService.fetchStats()).thenReturn(Single.just(statsData))
         presenter.getSummaryStats()
 
-        verify(view,times(1)).setCurrentPrice(any())
-        verify(view,times(1)).setTradeVolume(any())
-        verify(view,times(1)).setLastUpdated(any())
+        verify(view, times(1)).setCurrentPrice(any())
+        verify(view, times(1)).setTradeVolume(any())
+        verify(view, times(1)).setLastUpdated(any())
     }
 
     @Test

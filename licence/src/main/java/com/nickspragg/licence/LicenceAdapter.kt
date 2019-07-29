@@ -39,5 +39,7 @@ class LicenceAdapter : ListAdapter<LicenceAdapter.ViewModel, LicenceAdapter.View
         abstract fun bind(model: ViewModel)
     }
 
-    interface ViewModel
+    interface ViewModel {
+        override fun equals(other: Any?): Boolean
+    }
 }

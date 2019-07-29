@@ -16,4 +16,14 @@ class LicenceViewHolder(itemView: View) : LicenceAdapter.ViewHolder(itemView) {
     }
 }
 
-class LicenceViewModel(val licence: LicenceData) : LicenceAdapter.ViewModel
+class LicenceViewModel(val licence: LicenceData) : LicenceAdapter.ViewModel {
+    override fun equals(other: Any?) = if(other is LicenceViewModel){
+        licence == other.licence
+    } else {
+        false
+    }
+
+    override fun hashCode(): Int {
+        return licence.hashCode()
+    }
+}

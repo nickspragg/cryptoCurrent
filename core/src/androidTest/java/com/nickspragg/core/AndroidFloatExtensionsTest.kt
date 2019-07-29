@@ -12,8 +12,8 @@ class AndroidFloatExtensionsTest {
 
     @Test
     @Parameters("10000")
-    fun floatToCurrencyTest(input: Float){
-        assertEquals(input.formatCurrency().toString(),"$10,000.00")
+    fun floatToCurrencyTest(input: Float) {
+        assertEquals(input.formatCurrency().toString(), "$10,000.00")
     }
 
 }

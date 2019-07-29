@@ -20,7 +20,7 @@ class LicenceActivity : AppCompatActivity(), LicenceContract.View {
     @Inject
     lateinit var presenter: LicenceContract.Presenter
 
-    var adapter: LicenceAdapter = LicenceAdapter()
+    private val adapter: LicenceAdapter = LicenceAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerLicenceComponent
@@ -34,11 +34,11 @@ class LicenceActivity : AppCompatActivity(), LicenceContract.View {
 
         findViewById<Toolbar>(R.id.defaultToolbar)?.run {
             setSupportActionBar(this)
-            getSupportActionBar()?.apply {
+            supportActionBar?.apply {
                 setDisplayShowTitleEnabled(false)
                 setDisplayHomeAsUpEnabled(true)
             }
-            getNavigationIcon()?.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+            navigationIcon?.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
         }
 
         val linearLayoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
@@ -53,12 +53,12 @@ class LicenceActivity : AppCompatActivity(), LicenceContract.View {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressed()
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

@@ -20,7 +20,7 @@ class CurrentMarketModule(private val view: CurrentMarketContract.View) {
     fun providesView(): CurrentMarketContract.View = view
 
     @Provides
-    fun providesMarketService() : MarketService {
+    fun providesMarketService(): MarketService {
         val retrofit = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

@@ -16,7 +16,8 @@ fun Float.formatCurrency(currencySymbol: String = "$"): SpannableString {
         it.setSpan(
             RelativeSizeSpan(0.7f),
             it.length - 2,
-            it.length, 0)
+            it.length, 0
+        )
         it
     }
 }

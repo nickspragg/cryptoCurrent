@@ -2,7 +2,7 @@ package com.nickspragg.currentmarket.model
 
 import com.google.gson.annotations.SerializedName
 
-data class StatsData (
+data class StatsData(
     @SerializedName("market_price_usd")
     val marketPriceUsd: Double,
     @SerializedName("timestamp")

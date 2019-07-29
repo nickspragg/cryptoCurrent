@@ -28,14 +28,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 
-
 class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
 
     @Inject
     lateinit var presenter: CurrentMarketContract.Presenter
 
-    private val chartDateFormat = SimpleDateFormat("dd MMM", Locale.ENGLISH)
-    private val lastDateFormat = SimpleDateFormat("yyyy/mm/dd HH:mm:ss", Locale.ENGLISH)
+    private val chartDateFormat = SimpleDateFormat(getString(R.string.chartDateFormat), Locale.ENGLISH)
+    private val lastDateFormat = SimpleDateFormat(getString(R.string.lastUpdatedDateFormat), Locale.ENGLISH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerCurrentMarketComponent
@@ -74,12 +73,12 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.licences -> {
                 startActivity(Intent(this, LicenceActivity::class.java))
-                return true
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -92,12 +91,12 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
         // create a dataset and give it a type
         val set1 = LineDataSet(values, "BTC Price (USD)").apply {
             setDrawCircles(false)
-            setLineWidth(2f)
-            setCircleRadius(3f)
-            setFillAlpha(255)
+            lineWidth = 2f
+            circleRadius = 3f
+            fillAlpha = 255
             setDrawFilled(true)
             color = ContextCompat.getColor(this@CurrentMarketActivity, R.color.fillColour)
-            setFillColor(ContextCompat.getColor(this@CurrentMarketActivity, R.color.fillColour))
+            fillColor = ContextCompat.getColor(this@CurrentMarketActivity, R.color.fillColour)
         }
 
         // create a data object with the data sets
@@ -107,7 +106,7 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
         }
 
         // set data
-        dailyChart.setData(data)
+        dailyChart.data = data
         dailyChart.notifyDataSetChanged()
         dailyChart.setVisibleXRange(7f.asDaysToEpoch(), 7f.asDaysToEpoch())
         prices.lastOrNull()?.run {
@@ -161,20 +160,20 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
         }
 
         with(dailyChart.xAxis) {
-            setPosition(XAxis.XAxisPosition.TOP)
-            setTextSize(10f)
-            setTextColor(Color.WHITE)
+            position = XAxis.XAxisPosition.TOP
+            textSize = 10f
+            textColor = Color.WHITE
             setDrawAxisLine(false)
             setDrawGridLines(true)
-            setTextColor(Color.BLACK)
+            textColor = Color.BLACK
             setCenterAxisLabels(true)
-            setGranularity(1f.asDaysToEpoch()) // one day
-            setValueFormatter(object : ValueFormatter() {
+            granularity = 1f.asDaysToEpoch() // one day
+            valueFormatter = object : ValueFormatter() {
                 override fun getFormattedValue(value: Float): String {
                     val millis = value.toLong() * 1000
                     return chartDateFormat.format(Date(millis))
                 }
-            })
+            }
         }
     }
 }

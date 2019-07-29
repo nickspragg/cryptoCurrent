@@ -9,8 +9,10 @@ import javax.inject.Singleton
 @Singleton
 @Component(modules = [CoreModule::class])
 interface CoreComponent {
-    @Named("ioScheduler") fun getIOScheduler(): Scheduler
+    @Named("ioScheduler")
+    fun getIOScheduler(): Scheduler
 
-    @Named("mainScheduler") fun getMainScheduler(): Scheduler
+    @Named("mainScheduler")
+    fun getMainScheduler(): Scheduler
 
 }

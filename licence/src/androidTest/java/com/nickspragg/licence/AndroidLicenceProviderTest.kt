@@ -4,7 +4,7 @@ import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import com.nickspragg.licence.model.LicenceData
 import com.nickspragg.licence.provider.LicenceProvider
-import junit.framework.Assert.*
+import junit.framework.Assert.assertEquals
 import org.hamcrest.Matchers.instanceOf
 import org.junit.Assert.assertThat
 import org.junit.Test
