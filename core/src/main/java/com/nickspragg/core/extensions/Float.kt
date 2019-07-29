@@ -20,3 +20,12 @@ fun Float.formatCurrency(currencySymbol: String = "$"): SpannableString {
         it
     }
 }
+
+
+/**
+ * Convert a float representing a number of days into Epoch unit.
+ * @return Float: Epoch representation of the number of days.
+ */
+fun Float.asDaysToEpoch(): Float {
+    return this.times(86400)
+}
