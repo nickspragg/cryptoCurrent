@@ -4,7 +4,7 @@ import android.app.Application
 import com.nickspragg.core.di.CoreComponent
 import com.nickspragg.core.di.CoreComponentProvider
 import com.nickspragg.core.di.DaggerCoreComponent
-import com.nickspragg.cryptocurrents.logging.ErrorReportingTree
+import com.nickspragg.cryptocurrent.logging.ErrorReportingTree
 import timber.log.Timber
 
 class AppController : Application(), CoreComponentProvider {
@@ -14,6 +14,7 @@ class AppController : Application(), CoreComponentProvider {
     override fun onCreate() {
         super.onCreate()
 
+        //Prepare Timber logging support.
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree(), ErrorReportingTree())
         } else {
