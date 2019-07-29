@@ -22,9 +22,6 @@ class CurrentMarketPresenter @Inject constructor(
     private var disposable: CompositeDisposable = CompositeDisposable()
 
     override fun getMarketChart(isRefresh: Boolean) {
-//        https://api.blockchain.info/charts/transactions-per-second
-//        ?timespan=5weeks&rollingAverage=8hours&format=json
-        showChartStatus(Status.LOADING)
         disposable += marketService
             .fetchMarketPrice()
             .subscribeOn(ioScheduler)
@@ -33,11 +30,9 @@ class CurrentMarketPresenter @Inject constructor(
                 { response ->
                     response.values?.run {
                         view.setChartData(this)
-                        showChartStatus(Status.VALID)
                     }
                 },
                 { error ->
-                    showChartStatus(Status.ERROR)
                     Timber.e(error)
                 }
             )
@@ -53,10 +48,10 @@ class CurrentMarketPresenter @Inject constructor(
             .subscribe(
                 { response ->
                     response.run {
-                        showSummaryStatus(Status.VALID)
                         view.setCurrentPrice(marketPriceUsd)
                         view.setTradeVolume(tradeVolumeUsd)
                         view.setLastUpdated(timestamp)
+                        showSummaryStatus(Status.VALID)
                     }
                 },
                 { error ->
@@ -68,25 +63,6 @@ class CurrentMarketPresenter @Inject constructor(
 
     override fun dispose() {
         disposable.clear()
-    }
-
-
-    private fun showChartStatus(status: Status) {
-        var (showError, showChart, showPlaceholder) = arrayOf(false, false, false)
-        when (status) {
-            Status.ERROR -> {
-                showError = true
-            }
-            Status.VALID -> {
-                showChart = true
-            }
-            Status.LOADING -> {
-                showPlaceholder = true
-            }
-        }
-//        view.showErrorChartView(showError)
-//        view.showPlaceholderChartView(showChart)
-//        view.showChartView(showPlaceholder)
     }
 
     private fun showSummaryStatus(status: Status) {
