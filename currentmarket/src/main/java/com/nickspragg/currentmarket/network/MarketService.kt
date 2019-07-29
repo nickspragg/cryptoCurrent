@@ -9,13 +9,6 @@ import retrofit2.http.Query
 
 interface MarketService {
 
-    @GET("charts/transactions-per-second")
-    fun fetchTransactionsPerSecond(
-        @Query("timespan") timespan: String,
-        @Query("rollingAverage") rollingAverage: String? = null,
-        @Query("start") start: String? = null,
-        @Query("format") format: String = "json"): Single<ChartData>
-
     @GET("charts/market-price")
     fun fetchMarketPrice(
         @Query("timespan") timespan: String = "30days",
