@@ -33,8 +33,8 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
     @Inject
     lateinit var presenter: CurrentMarketContract.Presenter
 
-    private val chartDateFormat = SimpleDateFormat(getString(R.string.chartDateFormat), Locale.ENGLISH)
-    private val lastDateFormat = SimpleDateFormat(getString(R.string.lastUpdatedDateFormat), Locale.ENGLISH)
+    private val chartDateFormat = SimpleDateFormat("dd MMM", Locale.ENGLISH)
+    private val lastDateFormat = SimpleDateFormat("yyyy/mm/dd HH:mm:ss", Locale.ENGLISH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerCurrentMarketComponent

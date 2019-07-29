@@ -5,9 +5,5 @@
     <string name="currentPriceLabel">Current Price (USD)</string>
     <string name="volumeLabel">Traded Volume (USD)</string>
     <string name="lastUpdatedLabel">Last Updated:</string>
-    <string name="lastUpdatedDateFormat">yyyy/mm/dd HH:mm:ss</string>
     <string name="failedToReachServer">Connection Error</string>
-
-    <!--Chart-->
-    <string name="chartDateFormat">dd MMM</string>
 </resources>
