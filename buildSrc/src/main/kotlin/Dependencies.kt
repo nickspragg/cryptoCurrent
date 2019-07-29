@@ -68,40 +68,36 @@ object UILibraries {
         const val mpAndroidChart = "v3.1.0"
         const val materialComponents = "1.0.0" // 1.1.0-alpha08
         const val shimmerLayout = "0.5.0"
+        const val recyclerView = "1.0.0"
     }
 
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val mpAndroidChart = "com.github.PhilJay:MPAndroidChart:${Versions.mpAndroidChart}"
     const val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
     const val shimmerLayout = "com.facebook.shimmer:shimmer:${Versions.shimmerLayout}"
+    const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
 }
 
 object NetworkLibraries {
     private object Versions {
-        const val okHttp = "3.10.0"
-        const val logger = "3.8.1"
         const val retrofit2 = "2.6.0"
         const val retrofitRxJavaAdapter = "2.6.0"
         const val gsonConverter = "2.6.0"
-        const val gson = "2.8.5"
     }
 
-    const val okHttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
-    const val logger = "com.squareup.okhttp3:logging-interceptor:${Versions.logger}"
     const val retrofit2 = "com.squareup.retrofit2:retrofit:${Versions.retrofit2}"
     const val retrofitRxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofitRxJavaAdapter}"
     const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.gsonConverter}"
-    const val gson = "com.google.code.gson:gson:${Versions.gson}"
 }
 
-object CrashReportLibraries {
+object IOLibraries {
     private object Versions {
-        const val timber = "4.7.1"
-        const val firebaseCrashlytics = "16.2.1"
+        const val commonsIo = "2.6"
+        const val gson = "2.8.5"
     }
 
-    const val firebaseCrashlytics = "com.google.firebase:firebase-crash:${Versions.firebaseCrashlytics}"
-    const val timberLog = "com.jakewharton.timber:timber:${Versions.timber}"
+    const val commonsIo = "commons-io:commons-io:${Versions.commonsIo}"
+    const val gson = "com.google.code.gson:gson:${Versions.gson}"
 }
 
 object TestLibraries {

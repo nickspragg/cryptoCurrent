@@ -1,7 +1,10 @@
 package com.nickspragg.currentmarket
 
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -17,13 +20,14 @@ import com.nickspragg.core.extensions.formatCurrency
 import com.nickspragg.currentmarket.di.CurrentMarketModule
 import com.nickspragg.currentmarket.di.DaggerCurrentMarketComponent
 import com.nickspragg.currentmarket.model.ChartData
+import com.nickspragg.licence.LicenceActivity
 import kotlinx.android.synthetic.main.activity_current_market.*
 import kotlinx.android.synthetic.main.error_summary_view.*
 import kotlinx.android.synthetic.main.summary_view.*
 import java.text.SimpleDateFormat
 import java.util.*
-import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+
 
 class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
 
@@ -64,6 +68,21 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
         setupChart()
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.options_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.licences -> {
+                startActivity(Intent(this, LicenceActivity::class.java))
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
     override fun setChartData(prices: List<ChartData.PricePoint>) {
         val values = ArrayList<Entry>().apply {
             prices.forEach {
@@ -90,7 +109,7 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
         // set data
         dailyChart.setData(data)
         dailyChart.notifyDataSetChanged()
-        dailyChart.setVisibleXRange(7f.asDaysToEpoch(),7f.asDaysToEpoch())
+        dailyChart.setVisibleXRange(7f.asDaysToEpoch(), 7f.asDaysToEpoch())
         prices.lastOrNull()?.run {
             dailyChart.moveViewToX(xValue.toFloat())
         }
@@ -109,15 +128,15 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
     }
 
     override fun showPlaceholderSummaryView(show: Boolean) {
-        placeholderSummaryView.visibility = if(show) View.VISIBLE else View.GONE
+        placeholderSummaryView.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     override fun showSummaryView(show: Boolean) {
-        summaryView.visibility = if(show) View.VISIBLE else View.GONE
+        summaryView.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     override fun showErrorSummaryView(show: Boolean) {
-        errorSummaryView.visibility = if(show) View.VISIBLE else View.GONE
+        errorSummaryView.visibility = if (show) View.VISIBLE else View.GONE
     }
 
     override fun hideIsRefreshing() {
@@ -129,7 +148,7 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
         super.onDestroy()
     }
 
-    private fun setupChart(){
+    private fun setupChart() {
 
         with(dailyChart) {
             setBackgroundColor(Color.WHITE)

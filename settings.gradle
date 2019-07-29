@@ -1,1 +1,1 @@
-include ':app', ':core', ':currentmarket', 'buildSrc'
+include ':app', ':core', ':currentmarket', ':licence', 'buildSrc'

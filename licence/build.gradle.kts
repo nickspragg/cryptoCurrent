@@ -26,22 +26,21 @@ android {
 
 dependencies {
 
-    implementation(project(":licence"))
     implementation(project(":core"))
 
-    implementation(UILibraries.mpAndroidChart)
     implementation(UILibraries.materialComponents)
-    implementation(UILibraries.shimmerLayout)
-    implementation(NetworkLibraries.retrofit2)
-    implementation(NetworkLibraries.retrofitRxJavaAdapter)
-    implementation(NetworkLibraries.retrofitGsonConverter)
+    implementation(UILibraries.constraintLayout)
+    implementation(UILibraries.recyclerView)
+    implementation(IOLibraries.commonsIo)
+    implementation(IOLibraries.gson)
 
     kapt(CoreLibraries.dagger2AnnotationProcessor)
     kapt(CoreLibraries.dagger2Compiler)
 
-    testImplementation (TestLibraries.junit4)
+    testImplementation(TestLibraries.junit4)
     testImplementation(TestLibraries.mockito)
     testImplementation(TestLibraries.mockitoKotlin)
-    androidTestImplementation (TestLibraries.testRunner)
-    androidTestImplementation (TestLibraries.espresso)
+    androidTestImplementation(TestLibraries.junit4)
+    androidTestImplementation(TestLibraries.testRunner)
+    androidTestImplementation(TestLibraries.espresso)
 }
