@@ -1,5 +1,6 @@
 package com.nickspragg.core
 
+import com.nickspragg.core.extensions.asDaysToEpoch
 import com.nickspragg.core.extensions.formatCurrency
 import junit.framework.Assert.assertEquals
 import junitparams.JUnitParamsRunner
@@ -11,9 +12,9 @@ import org.junit.runner.RunWith
 class FloatExtensionsTest {
 
     @Test
-    @Parameters("10000")
-    fun floatToCurrencyTest(input: Float){
-        assertEquals(input.formatCurrency().toString(),"$10,000.00")
+    @Parameters("1")
+    fun floatAsDayToEpochTest(input: Float){
+        assertEquals(input.asDaysToEpoch(),86400f)
     }
 
 }
