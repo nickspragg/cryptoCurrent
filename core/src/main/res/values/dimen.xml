@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--Typography Sizes-->
+    <dimen name="font_large_title">48sp</dimen>
+    <dimen name="font_title_1">32sp</dimen>
+    <dimen name="font_title_2">24sp</dimen>
+    <dimen name="font_title_3">20sp</dimen>
+    <dimen name="font_body">17sp</dimen>
+    <dimen name="font_callout">16sp</dimen>
+    <dimen name="font_subhead">14sp</dimen>
+    <dimen name="font_footnote">13sp</dimen>
+    <dimen name="font_caption_1">12sp</dimen>
+    <dimen name="font_caption_2">11sp</dimen>
+
+    <dimen name="home_card_radius">16dp</dimen>
+    <dimen name="toolbar_height">48dp</dimen>
+
+    <dimen name="mtrl_card_spacing">20dp</dimen>
+</resources>

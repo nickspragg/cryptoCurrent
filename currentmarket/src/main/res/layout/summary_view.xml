@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/currentPriceCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/mtrl_card_spacing"
+            android:layout_marginTop="@dimen/mtrl_card_spacing"
+            android:layout_marginRight="@dimen/mtrl_card_spacing"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tradeVolumeUsdCard"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            android:orientation="vertical"
+            android:gravity="center">
+
+        <TextView
+                android:id="@+id/currentPriceTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/majorTxtMargin"
+                android:layout_marginBottom="@dimen/majorTxtMargin"
+                android:textSize="@dimen/font_large_title"
+                tools:text="$9,123"/>
+        <TextView
+                android:id="@+id/currentPriceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/labelTxtMargin"
+                android:layout_marginBottom="@dimen/labelTxtMargin"
+                android:textSize="@dimen/font_callout"
+                android:text="@string/currentPriceLabel"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/tradeVolumeUsdCard"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/mtrl_card_spacing"
+            android:layout_marginRight="@dimen/mtrl_card_spacing"
+            app:layout_constraintTop_toBottomOf="@id/currentPriceCard"
+            app:layout_constraintBottom_toBottomOf="@id/lastUpdatedContainer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+        <TextView
+                android:id="@+id/tradeVolumeUsdTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/majorTxtMargin"
+                android:layout_marginBottom="@dimen/majorTxtMargin"
+                android:textSize="@dimen/font_title_2"
+                tools:text="$9,123"/>
+        <TextView
+                android:id="@+id/tradeVolumeUsdLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/labelTxtMargin"
+                android:layout_marginBottom="@dimen/labelTxtMargin"
+                android:textSize="@dimen/font_callout"
+                android:text="@string/volumeLabel"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+    <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lastUpdatedContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tradeVolumeUsdCard"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:orientation="horizontal"
+            android:gravity="center">
+        <TextView
+                android:id="@+id/lastUpdatedLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_callout"
+                android:layout_marginRight="@dimen/lastUpdatedLabelMargin"
+                android:text="@string/lastUpdatedLabel"/>
+        <TextView
+                android:id="@+id/lastUpdatedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/font_callout"
+                android:text="2019/07/29 16:00:00"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

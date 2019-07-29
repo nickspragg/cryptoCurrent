@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.nickspragg.currentmarket">
+    <application>
+        <activity
+                android:name=".CurrentMarketActivity"
+                android:screenOrientation="portrait">
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "422627665867",
+    "firebase_url": "https://crypto-78eb3.firebaseio.com",
+    "project_id": "crypto-78eb3",
+    "storage_bucket": "crypto-78eb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422627665867:android:f024784bbe5f2255",
+        "android_client_info": {
+          "package_name": "com.nickspragg.cryptocurrent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "422627665867-np3istkq7gsnjhqe3tbfff0djaj747uh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWKXQe_QBr9KRezwH3k6ClLO9CnK3iA0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "422627665867-np3istkq7gsnjhqe3tbfff0djaj747uh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

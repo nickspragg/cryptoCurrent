@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="licenceViewPadding">10dp</dimen>
+    <dimen name="licenceViewMargin">10dp</dimen>
+    <dimen name="titleMargin">10dp</dimen>
+</resources>
