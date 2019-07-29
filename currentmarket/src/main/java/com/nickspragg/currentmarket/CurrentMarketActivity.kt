@@ -2,6 +2,7 @@ package com.nickspragg.currentmarket
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
@@ -16,6 +17,8 @@ import com.nickspragg.currentmarket.di.CurrentMarketModule
 import com.nickspragg.currentmarket.di.DaggerCurrentMarketComponent
 import com.nickspragg.currentmarket.model.ChartData
 import kotlinx.android.synthetic.main.activity_current_market.*
+import kotlinx.android.synthetic.main.error_summary_view.*
+import kotlinx.android.synthetic.main.summary_view.*
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -27,7 +30,7 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
     lateinit var presenter: CurrentMarketContract.Presenter
 
     private val chartDateFormat = SimpleDateFormat("dd MMM", Locale.ENGLISH)
-    private val lastDateFormat = SimpleDateFormat("YYYY/mm/dd HH:mm:ss", Locale.ENGLISH)
+    private val lastDateFormat = SimpleDateFormat("yyyy/mm/dd HH:mm:ss", Locale.ENGLISH)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DaggerCurrentMarketComponent
@@ -48,6 +51,11 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
         presenter.getSummaryStats()
 
         swiperefresh.setOnRefreshListener {
+            presenter.getMarketChart(true)
+            presenter.getSummaryStats(true)
+        }
+
+        refreshButton.setOnClickListener {
             presenter.getMarketChart(true)
             presenter.getSummaryStats(true)
         }
@@ -85,7 +93,7 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
         }
     }
 
-    override fun showMarketChart(prices: List<ChartData.PricePoint>) {
+    override fun setChartData(prices: List<ChartData.PricePoint>) {
         val values = ArrayList<Entry>().apply {
             prices.forEach {
                 add(Entry(it.xValue.toFloat(), it.yValue.toFloat()))
@@ -113,17 +121,28 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
         dailyChart.invalidate()
     }
 
-    override fun showCurrentPrice(price: Double) {
+    override fun setCurrentPrice(price: Double) {
         currentPriceTxt.text = price.toFloat().formatCurrency()
     }
 
-    override fun showTradeVolume(volume: Double) {
+    override fun setTradeVolume(volume: Double) {
         tradeVolumeUsdTxt.text = volume.toFloat().formatCurrency()
     }
 
-    override fun showLastUpdated(time: Long) {
-        val millis = TimeUnit.HOURS.toMillis(time)
-        lastUpdated.text = getString(R.string.lastUpdated, lastDateFormat.format(Date(millis)))
+    override fun setLastUpdated(time: Long) {
+        lastUpdatedDate.text = lastDateFormat.format(Date(time))
+    }
+
+    override fun showPlaceholderSummaryView(show: Boolean) {
+        placeholderSummaryView.visibility = if(show) View.VISIBLE else View.GONE
+    }
+
+    override fun showSummaryView(show: Boolean) {
+        summaryView.visibility = if(show) View.VISIBLE else View.GONE
+    }
+
+    override fun showErrorSummaryView(show: Boolean) {
+        errorSummaryView.visibility = if(show) View.VISIBLE else View.GONE
     }
 
     override fun hideIsRefreshing() {

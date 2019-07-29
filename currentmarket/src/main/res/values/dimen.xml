@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--Summary container-->
+    <dimen name="majorTxtMargin">4dp</dimen>
+    <dimen name="labelTxtMargin">4dp</dimen>
+    <dimen name="lastUpdatedLabelMargin">10dp</dimen>
+
+    <!--Error state-->
+    <dimen name="refreshIconSize">40dp</dimen>
+    <dimen name="refreshIconMargin">4dp</dimen>
+
+    <!--Placeholder-->
+    <dimen name="placeholderCurrentPriceTxtHeight">50dp</dimen>
+    <dimen name="placeholderCurrentPriceTxtWidth">200dp</dimen>
+    <dimen name="placeholderVolumeTxtHeight">34dp</dimen>
+    <dimen name="placeholderVolumeTxtWidth">200dp</dimen>
+    <dimen name="placeholderLastUpdatedLabelHeight">16dp</dimen>
+    <dimen name="placeholderLastUpdatedLabelWidth">150dp</dimen>
 
 </resources>

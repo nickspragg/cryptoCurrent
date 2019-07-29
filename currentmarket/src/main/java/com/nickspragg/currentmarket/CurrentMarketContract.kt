@@ -4,10 +4,14 @@ import com.nickspragg.currentmarket.model.ChartData
 
 interface CurrentMarketContract {
     interface View {
-        fun showMarketChart(prices: List<ChartData.PricePoint>)
-        fun showCurrentPrice(price: Double)
-        fun showTradeVolume(volume: Double)
-        fun showLastUpdated(time: Long)
+        fun setChartData(prices: List<ChartData.PricePoint>)
+        fun setCurrentPrice(price: Double)
+        fun setTradeVolume(volume: Double)
+        fun setLastUpdated(time: Long)
+
+        fun showPlaceholderSummaryView(show: Boolean)
+        fun showSummaryView(show: Boolean)
+        fun showErrorSummaryView(show: Boolean)
 
         fun hideIsRefreshing()
     }

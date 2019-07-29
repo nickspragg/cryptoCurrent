@@ -67,11 +67,13 @@ object UILibraries {
         const val constraintLayout = "1.1.3" // 2.0.0-beta2
         const val mpAndroidChart = "v3.1.0"
         const val materialComponents = "1.0.0" // 1.1.0-alpha08
+        const val shimmerLayout = "0.5.0"
     }
 
     const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
     const val mpAndroidChart = "com.github.PhilJay:MPAndroidChart:${Versions.mpAndroidChart}"
     const val materialComponents = "com.google.android.material:material:${Versions.materialComponents}"
+    const val shimmerLayout = "com.facebook.shimmer:shimmer:${Versions.shimmerLayout}"
 }
 
 object NetworkLibraries {
@@ -88,7 +90,7 @@ object NetworkLibraries {
     const val logger = "com.squareup.okhttp3:logging-interceptor:${Versions.logger}"
     const val retrofit2 = "com.squareup.retrofit2:retrofit:${Versions.retrofit2}"
     const val retrofitRxJavaAdapter = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofitRxJavaAdapter}"
-    const val gsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.gsonConverter}"
+    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.gsonConverter}"
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
 }
 

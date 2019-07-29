@@ -57,7 +57,7 @@ class CurrentMarketPresenterTest {
         whenever(marketService.fetchMarketPrice()).thenReturn(Single.just(chartData))
         whenever(chartData.values).thenReturn(values)
         presenter.getMarketChart()
-        verify(view).showMarketChart(values)
+        verify(view).setChartData(values)
     }
 
     @Test
@@ -71,9 +71,9 @@ class CurrentMarketPresenterTest {
     fun getSummaryStats_successResponse() {
         whenever(marketService.fetchStats()).thenReturn(Single.just(statsData))
         presenter.getSummaryStats()
-        verify(view).showCurrentPrice(any())
-        verify(view).showTradeVolume(any())
-        verify(view).showLastUpdated(any())
+        verify(view).setCurrentPrice(any())
+        verify(view).setTradeVolume(any())
+        verify(view).setLastUpdated(any())
     }
 
     @Test

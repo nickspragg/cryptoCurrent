@@ -30,9 +30,10 @@ dependencies {
 
     implementation(UILibraries.mpAndroidChart)
     implementation(UILibraries.materialComponents)
+    implementation(UILibraries.shimmerLayout)
     implementation(NetworkLibraries.retrofit2)
     implementation(NetworkLibraries.retrofitRxJavaAdapter)
-    implementation(NetworkLibraries.gsonConverter)
+    implementation(NetworkLibraries.retrofitGsonConverter)
 
     kapt(CoreLibraries.dagger2AnnotationProcessor)
     kapt(CoreLibraries.dagger2Compiler)

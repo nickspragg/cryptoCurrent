@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">currentmarket</string>
-    <string name="lastUpdated">Last Updated: %1$s</string>
+
+    <!--Summary view-->
+    <string name="currentPriceLabel">Current Price</string>
+    <string name="lastUpdatedLabel">Last updated:</string>
+    <string name="failedToReachServer">Connection error</string>
 </resources>

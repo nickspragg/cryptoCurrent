@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:shimmer="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:orientation="vertical"
+        shimmer:duration="800">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/placeholderPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/mtrl_card_spacing"
+                android:layout_marginTop="@dimen/mtrl_card_spacing"
+                android:layout_marginRight="@dimen/mtrl_card_spacing"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/placeholderVolume"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                android:orientation="vertical"
+                android:gravity="center">
+            <View
+                    android:layout_width="@dimen/placeholderCurrentPriceTxtWidth"
+                    android:layout_height="@dimen/placeholderCurrentPriceTxtHeight"
+                    android:background="@drawable/bg_placeholder"
+                    android:layout_marginTop="@dimen/majorTxtMargin"
+                    android:layout_marginBottom="@dimen/majorTxtMargin"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_callout"
+                    android:text="@string/currentPriceLabel"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/placeholderVolume"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/mtrl_card_spacing"
+                android:layout_marginRight="@dimen/mtrl_card_spacing"
+                app:layout_constraintTop_toBottomOf="@id/placeholderPrice"
+                app:layout_constraintBottom_toBottomOf="@id/placeholderLastUpdated"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="vertical"
+                android:gravity="center">
+
+            <View
+                    android:layout_width="@dimen/placeholderVolumeTxtWidth"
+                    android:layout_height="@dimen/placeholderVolumeTxtHeight"
+                    android:background="@drawable/bg_placeholder"
+                    android:layout_marginTop="@dimen/majorTxtMargin"
+                    android:layout_marginBottom="@dimen/majorTxtMargin"/>
+
+            <TextView
+                    android:id="@+id/tradeVolumeUsdLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_callout"
+                    android:text="Traded volume"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/placeholderLastUpdated"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/placeholderVolume"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal"
+                android:gravity="center">
+            <TextView
+                    android:id="@+id/lastUpdatedLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_callout"
+                    android:layout_marginRight="@dimen/lastUpdatedLabelMargin"
+                    android:text="@string/lastUpdatedLabel"/>
+            <View
+                    android:layout_width="@dimen/placeholderLastUpdatedLabelWidth"
+                    android:layout_height="@dimen/placeholderLastUpdatedLabelHeight"
+                    android:background="@drawable/bg_placeholder"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.facebook.shimmer.ShimmerFrameLayout>
