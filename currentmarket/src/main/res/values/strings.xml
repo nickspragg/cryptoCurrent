@@ -2,7 +2,8 @@
     <string name="app_name">currentmarket</string>
 
     <!--Summary view-->
-    <string name="currentPriceLabel">Current Price</string>
-    <string name="lastUpdatedLabel">Last updated:</string>
-    <string name="failedToReachServer">Connection error</string>
+    <string name="currentPriceLabel">Current Price (USD)</string>
+    <string name="volumeLabel">Traded Volume (USD)</string>
+    <string name="lastUpdatedLabel">Last Updated:</string>
+    <string name="failedToReachServer">Connection Error</string>
 </resources>

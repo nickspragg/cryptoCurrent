@@ -67,7 +67,7 @@
                 android:layout_marginTop="@dimen/labelTxtMargin"
                 android:layout_marginBottom="@dimen/labelTxtMargin"
                 android:textSize="@dimen/font_callout"
-                android:text="Traded volume"/>
+                android:text="@string/volumeLabel"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
     <androidx.appcompat.widget.LinearLayoutCompat

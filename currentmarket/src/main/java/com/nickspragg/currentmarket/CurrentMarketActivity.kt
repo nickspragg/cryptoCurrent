@@ -12,6 +12,7 @@ import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
 import com.nickspragg.core.di.CoreInjectHelper
+import com.nickspragg.core.extensions.asDaysToEpoch
 import com.nickspragg.core.extensions.formatCurrency
 import com.nickspragg.currentmarket.di.CurrentMarketModule
 import com.nickspragg.currentmarket.di.DaggerCurrentMarketComponent
@@ -60,37 +61,7 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
             presenter.getSummaryStats(true)
         }
 
-        with(dailyChart) {
-            setBackgroundColor(Color.WHITE)
-            setBorderColor(Color.BLACK)
-            setNoDataTextColor(Color.BLACK)
-            description.setEnabled(true)
-            setTouchEnabled(true)
-            // create marker to display box when values are selected
-            isDragEnabled = true
-            setScaleEnabled(true)
-            setPinchZoom(true)
-            setVisibleXRange(7f,7f)
-            axisRight.isEnabled = false
-            axisLeft.isEnabled = false
-        }
-
-        with(dailyChart.xAxis) {
-            setPosition(XAxis.XAxisPosition.TOP)
-            setTextSize(10f)
-            setTextColor(Color.WHITE)
-            setDrawAxisLine(false)
-            setDrawGridLines(true)
-            setTextColor(Color.BLACK)
-            setCenterAxisLabels(true)
-            setGranularity(1f) // one hour
-            setValueFormatter(object : ValueFormatter() {
-                override fun getFormattedValue(value: Float): String {
-                    val millis = value.toLong() * 1000
-                    return chartDateFormat.format(Date(millis))
-                }
-            })
-        }
+        setupChart()
     }
 
     override fun setChartData(prices: List<ChartData.PricePoint>) {
@@ -100,7 +71,7 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
             }
         }
         // create a dataset and give it a type
-        val set1 = LineDataSet(values, "DataSet 1").apply {
+        val set1 = LineDataSet(values, "BTC Price (USD)").apply {
             setDrawCircles(false)
             setLineWidth(2f)
             setCircleRadius(3f)
@@ -118,7 +89,11 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
 
         // set data
         dailyChart.setData(data)
-        dailyChart.invalidate()
+        dailyChart.notifyDataSetChanged()
+        dailyChart.setVisibleXRange(7f.asDaysToEpoch(),7f.asDaysToEpoch())
+        prices.lastOrNull()?.run {
+            dailyChart.moveViewToX(xValue.toFloat())
+        }
     }
 
     override fun setCurrentPrice(price: Double) {
@@ -152,5 +127,35 @@ class CurrentMarketActivity : AppCompatActivity(), CurrentMarketContract.View {
     override fun onDestroy() {
         presenter.dispose()
         super.onDestroy()
+    }
+
+    private fun setupChart(){
+
+        with(dailyChart) {
+            setBackgroundColor(Color.WHITE)
+            setBorderColor(Color.BLACK)
+            setNoDataTextColor(Color.BLACK)
+            setTouchEnabled(true)
+            isDragEnabled = true
+            axisRight.isEnabled = false
+            axisLeft.isEnabled = false
+        }
+
+        with(dailyChart.xAxis) {
+            setPosition(XAxis.XAxisPosition.TOP)
+            setTextSize(10f)
+            setTextColor(Color.WHITE)
+            setDrawAxisLine(false)
+            setDrawGridLines(true)
+            setTextColor(Color.BLACK)
+            setCenterAxisLabels(true)
+            setGranularity(1f.asDaysToEpoch()) // one day
+            setValueFormatter(object : ValueFormatter() {
+                override fun getFormattedValue(value: Float): String {
+                    val millis = value.toLong() * 1000
+                    return chartDateFormat.format(Date(millis))
+                }
+            })
+        }
     }
 }
